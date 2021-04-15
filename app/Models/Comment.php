@@ -10,4 +10,14 @@ class Comment extends Model
     use HasFactory;
     protected $guarded = ['id', 'created_at'];
 
+    function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    function post()
+    {
+        return $this->belongsTo(Post::class, 'id', 'user_id');
+    }
+
 }

@@ -40,4 +40,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function getPictureAttribute($val)
+    {
+        return ($val) ? $val : 'http://placehold.it/400x400';
+    }
 }

@@ -16,7 +16,7 @@ class LikeSeeder extends Seeder
     public function run()
     {
         Post::get()->each(function ($post) {
-            Like::factory()->count(rand(2, 50))->create([
+            Like::factory()->count(rand(2, 5))->create([
                 'user_id' => $post->user_id,
                 'post_id' => $post->id,
             ]);

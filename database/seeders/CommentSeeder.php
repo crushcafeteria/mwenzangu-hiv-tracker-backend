@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class CommentSeeder extends Seeder
@@ -16,8 +17,9 @@ class CommentSeeder extends Seeder
     public function run()
     {
         Post::get()->each(function ($post) {
-            Comment::factory()->count(rand(2, 20))->create([
-                'user_id' => $post->user_id,
+            $userID = User::get()->random()->id;
+            Comment::factory()->count(rand(2, 10))->create([
+                'user_id' => $userID,
                 'post_id' => $post->id,
             ]);
         });
