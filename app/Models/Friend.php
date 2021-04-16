@@ -4,23 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Friend extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id', 'created_at'];
+    protected $appends = ['friender_formatted', 'friended_formatted'];
 
-//    function user()
-//    {
-//        return $this->hasOne(User::class, 'id', 'user_id');
-//    }
-    function friender()
+    function getFrienderFormattedAttribute()
     {
-        return $this->hasOne(User::class, 'id', 'friender');
+        return User::find($this->attributes['friender']);
     }
-    function friended()
+
+    function getFriendedFormattedAttribute()
     {
-        return $this->hasMany(User::class, 'id', 'friended');
+        return User::find($this->attributes['friended']);
     }
 }
