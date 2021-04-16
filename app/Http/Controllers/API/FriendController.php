@@ -16,7 +16,7 @@ class FriendController extends Controller
     public function index()
     {
         $friends = Friend::with(['friender','friended'])
-            ->where('friender', auth()->id())
+            //->where('friender', auth()->id())
             ->inRandomOrder()->paginate();
 
         return response()->json($friends);
