@@ -17,7 +17,12 @@ class FriendController extends Controller
     public function index()
     {
         $me = User::with('friends')->find(auth()->id());
-        return response()->json($me->friends);
+
+        return response()->json([
+            'status' => 'OK',
+            'count'  => $me->friends->count(),
+            'data'   => $me->friends
+        ]);
     }
 
     /**
