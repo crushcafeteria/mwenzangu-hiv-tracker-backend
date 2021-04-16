@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,28 +14,32 @@ class AuthController extends Controller
     {
         $fields = request()->only(['email', 'password']);
         $validator = Validator::make($fields, [
-            'email' => 'required',
+            'email'    => 'required',
             'password' => 'required',
         ]);
 
         if ($validator->fails()) {
             return response()->json([
                 'status' => 'INVALID',
-                'error' => 'Please enter your email and password'
+                'error'  => 'Please enter your email and password'
             ]);
         }
 
-        if (!$token = auth('api')->attempt($fields)) {
+        if (!auth()->attempt($fields)) {
             return response()->json([
                 'status' => 'ERROR',
-                'error' => 'Login failed!'
+                'error'  => 'Login failed!'
             ], 403);
         }
 
+        # Create a token
+        $user = User::where('email', request()->email)->firstOrFail();
+        $token = $user->createToken($user->id);
+
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60
+            'token'  => $token->plainTextToken,
+            'user'   => $user,
+            'status' => 'OK'
         ]);
     }
 
