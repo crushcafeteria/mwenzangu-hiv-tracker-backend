@@ -24,3 +24,4 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 //Route::resource('/posts', API\PostController::class);
+Route::resource('/content', API\ContentController::class);

@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Content;
+use App\Models\Topics;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ContentFactory extends Factory
+class TopicsFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Content::class;
+    protected $model = Topics::class;
 
     /**
      * Define the model's default state.
@@ -22,11 +22,9 @@ class ContentFactory extends Factory
     public function definition()
     {
         return [
-            'text'     => $this->faker->sentence(rand(7, 30), true),
-            'media'    => 'http://placehold.it/800x500',
-            'title'    => $this->faker->sentence(rand(7, 30), true),
 
+            'text'  => $this->faker->sentence(rand(1,2), true),
+            'media' => 'http://placehold.it/800x500'
         ];
     }
 }
-

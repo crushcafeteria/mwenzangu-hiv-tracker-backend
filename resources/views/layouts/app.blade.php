@@ -12,25 +12,35 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        @include('layouts.css')
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+{{--        <div class="min-h-screen bg-gray-100">--}}
             @include('layouts.navigation')
 
             <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
+{{--            <header class="bg-white shadow">--}}
+{{--                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">--}}
+{{--                    {{ $header }}--}}
+{{--                </div>--}}
+{{--            </header>--}}
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                @yield('content')
+{{--                {{ $slot }}--}}
             </main>
-        </div>
+{{--        </div>--}}
     </body>
 </html>
+
