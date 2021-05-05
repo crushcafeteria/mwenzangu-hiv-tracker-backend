@@ -18,7 +18,7 @@ class ContentSeeder extends Seeder
     {
         User::get()->each(function ($user) {
             $topicID = Topics::get()->random()->id;
-            Content::factory()->count(rand(2, 5))->create([
+            Content::factory()->count(rand(2, 10))->create([
                 'user_id' => $user->id,
                 'topic_id' => $topicID
             ]);
