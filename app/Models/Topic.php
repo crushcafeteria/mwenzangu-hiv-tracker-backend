@@ -10,4 +10,9 @@ class Topic extends Model
     use HasFactory;
 
     protected $guarded = ['id', 'created_at'];
+
+    function content()
+    {
+        return $this->hasMany(Content::class, 'topic_id', 'id');
+    }
 }

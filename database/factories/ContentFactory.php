@@ -32,7 +32,7 @@ class ContentFactory extends Factory
         ];
 
         if ($type == 'VIDEO') {
-            $content['media'] = 'https://www.youtube.com/watch?v=MKNFW0YwDYw';
+            $content['media'] = 'https://www.youtube-nocookie.com/embed/bBvIZqpp7DU';
         }
 
         return $content;

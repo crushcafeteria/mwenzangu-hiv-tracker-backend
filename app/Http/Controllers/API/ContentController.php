@@ -16,28 +16,16 @@ class ContentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function context()
-    {
-        $context = DB::table('contents')
-            ->join('topics', 'topics.id', '=', 'contents.topic_id')
-            ->paginate(20);
-
-        $topics=Topic::paginate(30);
-
-        return view('content',compact('context','topics'));
-
-    }
-
     public function index()
     {
-        $context = DB::table('contents')
-            ->join('topics', 'topics.id', '=', 'contents.topic_id')
-            ->paginate(20);
-
-        $topics=Topic::paginate(30);
-
-        return view('content.index',compact('context','topics'));
-
+        $content = Content::query();
+        if (request()->topic) {
+            $content = $content->where('topic_id', request()->topic);
+        }
+        return view('content.list', [
+            'content' => $content->paginate(),
+            'topics'  => Topic::paginate(),
+        ]);
     }
 
     /**
@@ -53,7 +41,7 @@ class ContentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -64,18 +52,18 @@ class ContentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show(Content $content)
     {
-        return view('content.view',compact('content'));
+        return view('content.view', compact('content'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -86,8 +74,8 @@ class ContentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -98,7 +86,7 @@ class ContentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
