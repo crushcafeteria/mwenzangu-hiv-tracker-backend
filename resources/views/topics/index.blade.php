@@ -9,16 +9,16 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col col-xs-6">
-                                <h3 class="panel-title">List of Content</h3>
+                                <h3 class="panel-title">List of Topics</h3>
                             </div>
                             <div class="col col-xs-6 text-right">
-                                <button type="button" class="btn btn-sm btn-primary btn-create">Create Content</button>
+                                <button type="button" class="btn btn-sm btn-primary btn-create">Create Topic</button>
                             </div>
                         </div>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-list">
-                            @foreach($context as $content)
+                            @foreach($topics as $topic)
                                 <thead>
                                 <tr>
                                     <th class="hidden-xs">ID</th>
@@ -28,8 +28,8 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class="hidden-xs">{{$content->id}}</td>
-                                    <td>{{$content->text}}</td>
+                                    <td class="hidden-xs">{{$topic->id}}</td>
+                                    <td>{{$topic->text}}</td>
                                     <td align="center">
                                         <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
                                         <a class="btn btn-warning"><em class="fa fa-pen"></em></a>
@@ -43,7 +43,7 @@
                     <div class="panel-footer">
                         <div class="col col-xs-8">
                             <ul class="pagination hidden-xs pull-right">
-                                {{ $context->links() }}
+                                {{ $topics->links() }}
                             </ul>
                             <ul class="pagination visible-xs pull-right">
                                 <li><a href="#">«</a></li>
@@ -52,10 +52,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div></div>
+    </div>
 @endsection
 
 

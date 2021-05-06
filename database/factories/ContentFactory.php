@@ -21,12 +21,21 @@ class ContentFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'text'     => $this->faker->sentence(rand(7, 30), true),
-            'media'    => 'http://placehold.it/800x500',
-            'title'    => $this->faker->sentence(rand(7, 30), true),
+        $types = ['TEXT', 'VIDEO'];
+        $type = $types[rand(0, 1)];
 
+        $content = [
+            'title' => $this->faker->sentence(rand(3, 8), true),
+            'text'  => $this->faker->paragraphs(rand(1, 9), true),
+            'media' => 'http://placehold.it/800x500',
+            'type'  => $type
         ];
+
+        if ($type == 'VIDEO') {
+            $content['media'] = 'https://www.youtube.com/watch?v=MKNFW0YwDYw';
+        }
+
+        return $content;
     }
 }
 

@@ -15,11 +15,12 @@ class CreateContentsTable extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->references('users')->on('id');
+            $table->integer('user_id')->references('users')->on('id')->nullable();
             $table->integer('topic_id')->references('topics')->on('id');
-            $table->string('title');
-            $table->text('text');
-            $table->text('media');
+            $table->string('type');
+            $table->text('title');
+            $table->text('text')->nullable();
+            $table->text('media')->nullable();
             $table->timestamps();
         });
     }

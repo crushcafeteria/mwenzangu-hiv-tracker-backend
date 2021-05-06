@@ -16,8 +16,8 @@ class CreateTopicsTable extends Migration
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->references('users')->on('id');
-            $table->text('media');
-            $table->text('text');
+            $table->text('name');
+            $table->text('media')->nullable();
             $table->timestamps();
         });
     }

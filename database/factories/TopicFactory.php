@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Topics;
+use App\Models\Topic;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TopicsFactory extends Factory
+class TopicFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Topics::class;
+    protected $model = Topic::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,7 @@ class TopicsFactory extends Factory
     public function definition()
     {
         return [
-
-            'text'  => $this->faker->sentence(rand(1,2), true),
+            'name'  => 'Topic '.$this->faker->numberBetween(1, 99),
             'media' => 'http://placehold.it/800x500'
         ];
     }

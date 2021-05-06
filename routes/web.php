@@ -23,5 +23,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/context','API\ContentController@context');
 //Route::resource('/posts', API\PostController::class);
 Route::resource('/content', API\ContentController::class);
+Route::resource('/topic', API\TopicController::class);

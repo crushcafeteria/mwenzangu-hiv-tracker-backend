@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Content;
-use App\Models\Topics;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,13 +16,25 @@ class ContentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function context()
+    {
+        $context = DB::table('contents')
+            ->join('topics', 'topics.id', '=', 'contents.topic_id')
+            ->paginate(20);
+
+        $topics=Topic::paginate(30);
+
+        return view('content',compact('context','topics'));
+
+    }
+
     public function index()
     {
         $context = DB::table('contents')
             ->join('topics', 'topics.id', '=', 'contents.topic_id')
             ->paginate(20);
 
-        $topics=Topics::paginate(30);
+        $topics=Topic::paginate(30);
 
         return view('content.index',compact('context','topics'));
 

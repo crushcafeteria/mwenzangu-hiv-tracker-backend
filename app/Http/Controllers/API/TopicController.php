@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Models\Topic;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TopicController extends Controller
 {
@@ -13,7 +15,8 @@ class TopicController extends Controller
      */
     public function index()
     {
-        //
+        $topics=Topic::paginate(30);
+        return view('topics.index', compact('topics'));
     }
 
     /**

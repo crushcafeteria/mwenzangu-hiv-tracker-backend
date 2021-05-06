@@ -20,7 +20,7 @@
             </div>
             <div class="hidden sm:flex sm:items-center sm:ml-6" style="float:right">
                 <x-nav-link  >
-                    {{ __('Topics') }}
+                    {{ __('Topic') }}
                 </x-nav-link>
                 <x-nav-link >
                     {{ __('Content') }}

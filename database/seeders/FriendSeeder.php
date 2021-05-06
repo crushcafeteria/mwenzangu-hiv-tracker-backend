@@ -17,7 +17,7 @@ class FriendSeeder extends Seeder
     {
         User::get()->each(function ($user) {
             $friend = User::inRandomOrder()->first();
-            Friend::factory()->count(rand(2, 10))->create([
+            Friend::factory()->count(rand(2, 5))->create([
                 'friender' => $user->id,
                 'friended' => $friend->id
             ]);
