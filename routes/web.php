@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,5 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-//Route::resource('/posts', API\PostController::class);
-Route::resource('/topics', API\TopicController::class);
-Route::resource('/content', API\ContentController::class);
+Route::resource('/topics', TopicController::class);
+Route::resource('/content', ContentController::class);

@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9 blog-left">
-
+                <a href="{{ route('content.create') }}" type="button" class="btn btn-success ml-auto float-right">Add Content</a>
                 <h3>List of content items</h3>
                 <hr>
                 <div class="row">
@@ -28,8 +28,10 @@
 
                                     <div class="text-center">
                                         <button class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-secondary">Read</a>
-                                            <a href="#" class="btn btn-primary">Edit</a>
+                                            <a href="{{ route('content.show', ['content' => $item->id]) }}"
+                                               class="btn btn-secondary">Read</a>
+                                            <a href="{{ route('content.edit', ['content' => $item->id]) }}"
+                                               class="btn btn-primary">Edit</a>
                                             <a href="#" class="btn btn-danger">Delete</a>
                                         </button>
                                     </div>

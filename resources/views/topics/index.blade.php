@@ -17,8 +17,10 @@
                             <td>
                                 <a href="{{ route('topics.destroy', ['topic' => $topic->id]) }}"
                                    class="btn btn-outline-danger btn-sm float-right">Delete</a>
+                                <a href="{{ route('topics.show', ['topic' => $topic->id]) }}"
+                                   class="btn btn-outline-info btn-sm float-right mr-2">View</a>
                                 <a href="{{ route('topics.edit', ['topic' => $topic->id]) }}"
-                                   class="btn btn-outline-primary btn-sm float-right mr-2">Edit</a>
+                                class="btn btn-outline-primary btn-sm float-right mr-2">Edit</a>
                             </td>
                         </tr>
                     @endforeach
