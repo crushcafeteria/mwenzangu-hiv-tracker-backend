@@ -7,7 +7,7 @@
 
                 <h4 class="mb-4">New topic</h4>
 
-                <form method="POST" action="{{{ URL::to('/content') }}}" accept-charset="UTF-8">
+                <form class="mr-3" method="POST" action="{{{ URL::to('/content') }}}" accept-charset="UTF-8">
                     {{ csrf_field() }}
 
                     <div class="mb-3">
