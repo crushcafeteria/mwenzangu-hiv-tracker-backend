@@ -59,9 +59,33 @@ class AuthController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function register(Request $request)
     {
-        //
+        $validation = Validator::make($request->all(), [
+            'email'     => 'required|unique:users,email',
+            'telephone' => 'required',
+            'fname'     => 'required',
+            'lname'     => 'required',
+            'password'  => 'required',
+        ]);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => 'INVALID',
+                'error'  => $validation->errors()->first()
+            ]);
+        }
+
+        $row = $request->only(['email', 'telephone', 'password']);
+        $row['name'] = $request->fname . ' ' . $request->lname;
+        $row['password'] = bcrypt($row['password']);
+
+        $user = User::create($row);
+
+        return response()->json([
+            'status' => 'OK',
+            'error'  => $user
+        ]);
     }
 
     /**

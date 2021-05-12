@@ -14,6 +14,14 @@
                     <a class="nav-link" href="{{ route('topics.index') }}">Topics</a>
                 </li>
             </ul>
+
+            <ul class="navbar-nav ml-auto">
+                @if(auth()->check())
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url('logout') }}">Logout</a>
+                </li>
+                @endif
+            </ul>
         </div>
     </div>
 </nav>

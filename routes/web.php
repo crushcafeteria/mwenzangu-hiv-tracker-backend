@@ -26,3 +26,8 @@ require __DIR__.'/auth.php';
 
 Route::resource('/topics', TopicController::class);
 Route::resource('/content', ContentController::class);
+
+Route::get('logout', function(){
+    auth()->logout();
+    return redirect('login');
+});

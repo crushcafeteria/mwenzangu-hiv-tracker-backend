@@ -19,6 +19,6 @@ class UserSeeder extends Seeder
             'email'             => 'admin@gmail.com',
             'password'          => bcrypt('root')
         ]);
-        User::factory()->count(10)->create();
+        User::factory()->count(5)->create();
     }
 }
